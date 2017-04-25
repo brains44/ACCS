@@ -1,0 +1,240 @@
+{
+  "swagger": "2.0",
+  "schemes": [
+    "https", "http"
+  ],
+  "host": "brianmoviesearch-gse00000429.apaas.em2.oraclecloud.com",
+  "basePath": "/",
+  "info": {
+    "contact": {
+      "email": "brian.wolff@oracle.com",
+      "name": "NodeJS Open Movie Database search with SWAGGER.JSON for API integration",
+      "url": "http://brianmoviesearch-gse00000429.apaas.em2.oraclecloud.com"
+    },
+    "description": "NodeJS Open Movie Database search with SWAGGER.JSON for API integration. Use it with ICS/APIP...",
+    "title": "BwoMovieSearch",
+    "version": "1",
+    "x-apisguru-categories": [
+      "media",
+      "open_data"
+    ],
+    "x-origin": [
+      {
+        "format": "swagger",
+        "url": "https://brianmoviesearch-gse00000429.apaas.em2.oraclecloud.com/api/swagger.json",
+        "version": "2.0"
+      }
+    ],
+    "x-preferred": true,
+    "x-providerName": "brian.com",
+    "x-unofficialSpec": true
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json",
+    "application/xml"
+  ],
+  "securityDefinitions": {
+    
+  },
+  "paths": {
+     "/": {
+      "get": {
+        "description": "This is an test method called HelloWorld",
+        "operationId": "Get_Bwo_HelloWorld",
+        "parameters": [
+         
+        ],
+        "responses": {
+          "200": {
+            "description": "Default response"
+          }
+        },
+        "security": [
+          
+        ],
+        "summary": "Brian HelloWorld"
+      }
+    },
+     "/moviesearch/{name}": {
+      "get": {
+        "description": "Find a movie, series or episode from the OMDb by title, IMDb-id or by free-text search",
+        "operationId": "Get_Bwo_MovieSearch",
+        "parameters": [
+          {
+            "description": "Enter name of movie whom you want to more about.",
+            "in": "path",
+            "name": "name",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Default response",
+            "schema": {
+              "$ref": "#/definitions/combinedResult"
+            }
+          }
+        },
+        "security": [
+          
+        ],
+        "summary": "Brian MovieSearch"
+      }
+    }
+  },
+  "definitions": {
+    "combinedResult": {
+      "properties": {
+        "Actors": {
+          "type": "string"
+        },
+        "Awards": {
+          "type": "string"
+        },
+        "BoxOffice": {
+          "type": "string"
+        },
+        "Country": {
+          "type": "string"
+        },
+        "DVD": {
+          "type": "string"
+        },
+        "Director": {
+          "type": "string"
+        },
+        "Genre": {
+          "type": "string"
+        },
+        "Language": {
+          "type": "string"
+        },
+        "Metascore": {
+          "type": "string"
+        },
+        "Plot": {
+          "type": "string"
+        },
+        "Poster": {
+          "type": "string"
+        },
+        "Production": {
+          "type": "string"
+        },
+        "Rated": {
+          "type": "string"
+        },
+        "Released": {
+          "type": "string"
+        },
+        "Response": {
+          "type": "string"
+        },
+        "Runtime": {
+          "type": "string"
+        },
+        "Search": {
+          "items": {
+            "properties": {
+              "Poster": {
+                "type": "string"
+              },
+              "Title": {
+                "type": "string"
+              },
+              "Type": {
+                "type": "string"
+              },
+              "Year": {
+                "type": "string"
+              },
+              "imdbID": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "Title",
+              "Year",
+              "imdbID",
+              "Type",
+              "Poster"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "Title": {
+          "type": "string"
+        },
+        "Type": {
+          "type": "string"
+        },
+        "Website": {
+          "type": "string"
+        },
+        "Writer": {
+          "type": "string"
+        },
+        "Year": {
+          "type": "string"
+        },
+        "imdbID": {
+          "type": "string"
+        },
+        "imdbRating": {
+          "type": "string"
+        },
+        "imdbVotes": {
+          "type": "string"
+        },
+        "tomatoConsensus": {
+          "type": "string"
+        },
+        "tomatoFresh": {
+          "type": "string"
+        },
+        "tomatoImage": {
+          "type": "string"
+        },
+        "tomatoMeter": {
+          "type": "string"
+        },
+        "tomatoRating": {
+          "type": "string"
+        },
+        "tomatoReviews": {
+          "type": "string"
+        },
+        "tomatoRotten": {
+          "type": "string"
+        },
+        "tomatoURL": {
+          "type": "string"
+        },
+        "tomatoUserMeter": {
+          "type": "string"
+        },
+        "tomatoUserRating": {
+          "type": "string"
+        },
+        "tomatoUserReviews": {
+          "type": "string"
+        },
+        "totalResults": {
+          "type": "string"
+        },
+        "totalSeasons": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "Response"
+      ],
+      "type": "object"
+    }
+  }
+}
