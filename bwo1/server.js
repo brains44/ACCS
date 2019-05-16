@@ -25,6 +25,7 @@ app.get('/api/swagger.json', function (req, res) {
 });
 
 app.get('/moviesearch/:name', function (req, res) {
+    console.log("Inside movieseach: " + req)
     res.set('Content-Type', 'application/json');
     request.get({url: "https://www.omdbapi.com/?t=" + req.params.name}, function (error, response, body) {
         if (!error && response.statusCode === 200) {
