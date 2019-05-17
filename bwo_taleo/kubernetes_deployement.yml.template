@@ -24,7 +24,7 @@ spec:
         image: ${DOCKER_REPO}:${WERCKER_GIT_COMMIT}
         ports:
         - name: get-ip-server
-          containerPort: 8080
+          containerPort: 8484
           protocol: TCP
       imagePullSecrets:
       - name:  ${OKE_IMAGESECRET}
