@@ -1,0 +1,46 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.taleo.com/ws/art750/2006/12" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Entity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element type="xs:byte" name="ActiveApplicationCount"/>
+        <xs:element type="xs:string" name="Anonymous"/>
+        <xs:element type="xs:byte" name="CHiringProcessStatus"/>
+        <xs:element type="xs:string" name="CandidateReferrer"/>
+        <xs:element type="xs:dateTime" name="CreationDate"/>
+        <xs:element type="xs:string" name="EmailAddress"/>
+        <xs:element type="xs:byte" name="FieldsSet"/>
+        <xs:element type="xs:string" name="FirstName"/>
+        <xs:element type="xs:string" name="HasReferrered"/>
+        <xs:element type="xs:string" name="Hourly"/>
+        <xs:element type="xs:string" name="IdentificationMissing"/>
+        <xs:element type="xs:string" name="InHiringProcess"/>
+        <xs:element type="xs:dateTime" name="InclusiveLastModifiedDate"/>
+        <xs:element type="xs:string" name="InternalApplication"/>
+        <xs:element type="xs:string" name="IsApplicant"/>
+        <xs:element type="xs:string" name="IsPersonalInfoMasked"/>
+        <xs:element type="xs:dateTime" name="LastActivityDate"/>
+        <xs:element type="xs:dateTime" name="LastModifiedDate"/>
+        <xs:element type="xs:string" name="LastName"/>
+        <xs:element type="xs:string" name="NotifyByEmail"/>
+        <xs:element type="xs:short" name="Number"/>
+        <xs:element type="xs:string" name="PersonalInfoValidated"/>
+        <xs:element type="xs:string" name="Referred"/>
+        <xs:element name="UDFs">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="UDF" maxOccurs="unbounded" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute type="xs:string" name="name" use="optional"/>
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

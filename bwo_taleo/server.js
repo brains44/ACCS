@@ -1,10 +1,11 @@
 var express = require('express');
 var request = require('request');
 var https = require('https');
-var convert = require('xml-js');
 var app = express();
 var path = require('path');
 var public_dir = './public/';
+var libxmljs = require("libxmljs");
+
 
 //declare variables
 const REQUIRED_ENVIRONMENT_SETTINGS = [{
@@ -45,7 +46,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/checkCandidate/:email', function (req, res) {
 
-
+    res.setHeader('Content-Type', 'application/json');
     var escapedheader1 = '\'text\/xml; charset=UTF-8\'';
     var escapedheader2 = ' \'http:\/\/www.taleo.com\/ws\/tee800\/2009\/01\/find\/FindService#findEntities\'';
 
@@ -93,21 +94,42 @@ app.get('/checkCandidate/:email', function (req, res) {
 
     }, function (error, response, body) {
         if (!error && response.statusCode === 200) {
-            var parseString = require('xml2js').parseString;
+
+            var taleoboolean = false;
+            var taleoid = null;
             var xml = body;
-            parseString(xml, function (err, result) {
-                console.dir(JSON.stringify(result));
-                res.send(JSON.stringify(result));
-            });
+
+            //xpath /soap:Envelope/soap:Body/ns1:findEntitiesResponse/root:Entities/e:Entity/e:Number
+            var doc = libxmljs.parseXml(xml);
+
+            var aantal = doc.get('//root:Entities', {
+                'root': 'http://www.taleo.com/ws/tee800/2009/01/find'
+            }).attr('entityCount');
+
+            console.log('aantal is :' + aantal.value());
+
+            if (aantal.value() != 0) {
+                var ltaleoid = doc.get('//e:Number', {
+                    'e': 'http://www.taleo.com/ws/art750/2006/12'
+                });
+                taleoboolean = true;
+                taleoid = ltaleoid.text();
+                console.log('ltaleoid is ' + ltaleoid.text());
+            }
+            res.send(
+                {
+                    "checkCandidateResponse": {
+                        "candidateExists": taleoboolean,
+                        "taleo-id": taleoid
+                    }
+                }
+            );
+
 
 
         } else {
             console.log(response.statusCode);
-
-            //
             console.log(body);
-            //console.log(response);
-
         }
     }); //end checkcandidate
 
